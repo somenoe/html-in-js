@@ -1,6 +1,6 @@
 # HTML in JS - VS Code Extension
 
-This extension enables HTML syntax highlighting inside JavaScript template literals when using the `/*html*/` comment and enables Emmet abbreviations.
+This extension enables HTML syntax highlighting inside JavaScript template literals when using the `/*html*/` comment (case-insensitive: `/*html*/`, `/* html */`, `/*HTML*/`, `/* HTML */`, etc.) and enables Emmet abbreviations.
 
 ## Features
 
@@ -12,6 +12,7 @@ This extension enables HTML syntax highlighting inside JavaScript template liter
 ## Usage
 
 ### In JavaScript files (.js)
+
 ```javascript
 const element = /*html*/ `
   <div class="container">
@@ -19,9 +20,18 @@ const element = /*html*/ `
     <p>This text is highlighted as HTML</p>
   </div>
 `;
+
+// Also works with uppercase and spaces:
+const element2 = /* HTML */ `
+  <div class="container">
+    <h1>Hello World</h1>
+    <p>This text is also highlighted as HTML</p>
+  </div>
+`;
 ```
 
 ### In HTML files with script tags
+
 ```html
 <script type="module">
   const element = /*html*/ `
@@ -35,8 +45,8 @@ const element = /*html*/ `
 
 In order to see emmet abbreviation suggestions you must have to setup the `<script>` tag as `<script type="module">`.
 
-
 ### Using `${variables}` inside the `/*html*/` template literal
+
 ```html
 <script type="module">
   const Component = (title, text, class="container") = /*html*/ `
@@ -50,9 +60,20 @@ In order to see emmet abbreviation suggestions you must have to setup the `<scri
 </script>
 ```
 
+## Configuration
+
+The extension supports various formats of the HTML comment:
+
+- `/*html*/` (lowercase, no spaces)
+- `/* html */` (lowercase with spaces)
+- `/*HTML*/` (uppercase, no spaces)
+- `/* HTML */` (uppercase with spaces)
+- Any combination with different spacing
+
+All variations are case-insensitive and will work automatically.
 
 ## Notes
 
-- The extension automatically detects the `/*html*/` comment before template literals
+- The extension automatically detects the HTML comment before template literals (case-insensitive)
 - Highlighting works in both `.js` files and inside `<script>` tags in `.html` files
 - Emmet is automatically activated when you're typing inside these template literals

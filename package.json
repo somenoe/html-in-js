@@ -30,6 +30,17 @@
     "url": "https://github.com/DeusCL/html-in-js.git"
   },
   "contributes": {
+    "configuration": {
+      "title": "HTML in JS",
+      "properties": {
+        "htmlInJs.commentPattern": {
+          "type": "string",
+          "default": "html",
+          "markdownDescription": "Pattern to match in comments before template literals. Can be a string or regex pattern. Examples: `html`, `HTML`, `html|HTML` (for case-insensitive matching)",
+          "order": 1
+        }
+      }
+    },
     "grammars": [
       {
         "path": "./syntaxes/html-in-js.tmLanguage.json",
