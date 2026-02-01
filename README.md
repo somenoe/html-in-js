@@ -2,7 +2,7 @@
 
 > Forked from https://github.com/DeusCL/html-in-js
 
-This extension enables HTML syntax highlighting inside JavaScript template literals when using the `/*html*/` comment (case-insensitive: `/*html*/`, `/* html */`, `/*HTML*/`, `/* HTML */`, etc.) and enables Emmet abbreviations.
+This extension enables HTML syntax highlighting inside JavaScript template literals when using the `/* HTML */` comment and enables Emmet abbreviations.
 
 ## Features
 
@@ -10,21 +10,15 @@ This extension enables HTML syntax highlighting inside JavaScript template liter
 - Support for Emmet abbreviations
 - Works in `.js` and `.html` files
 - Support for JavaScript interpolation inside HTML (`${variable}`)
+- Use the `/* HTML */` comment to enable Prettier formatting with [HTML Template Support](https://prettier.io/blog/2018/11/07/1.15.0.html#html-template-literal-in-javascript)
+- Supports case-insensitive; e.g., `/*html*/`, `/* html */`, `/*HTML*/`, `/* HTML */`
 
 ## Usage
 
 ### In JavaScript files (.js)
 
 ```javascript
-const element = /*html*/ `
-  <div class="container">
-    <h1>Hello World</h1>
-    <p>This text is highlighted as HTML</p>
-  </div>
-`;
-
-// Also works with uppercase and spaces:
-const element2 = /* HTML */ `
+const element = /* HTML */ `
   <div class="container">
     <h1>Hello World</h1>
     <p>This text is also highlighted as HTML</p>
@@ -61,21 +55,3 @@ In order to see emmet abbreviation suggestions you must have to setup the `<scri
   document.body.innerHTML += Component("Hello World", "This text is highlighted as HTML");
 </script>
 ```
-
-## Configuration
-
-The extension supports various formats of the HTML comment:
-
-- `/*html*/` (lowercase, no spaces)
-- `/* html */` (lowercase with spaces)
-- `/*HTML*/` (uppercase, no spaces)
-- `/* HTML */` (uppercase with spaces)
-- Any combination with different spacing
-
-All variations are case-insensitive and will work automatically.
-
-## Notes
-
-- The extension automatically detects the HTML comment before template literals (case-insensitive)
-- Highlighting works in both `.js` files and inside `<script>` tags in `.html` files
-- Emmet is automatically activated when you're typing inside these template literals
