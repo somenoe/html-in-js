@@ -54,12 +54,30 @@
     "html-with-js-expressions": {
       "patterns": [
         {
+          "include": "#html-closing-tag"
+        },
+        {
           "include": "#html-tag-with-js-attributes"
         },
         {
           "include": "text.html.basic"
         }
       ]
+    },
+    "html-closing-tag": {
+      "name": "meta.tag.any.html",
+      "match": "(</)([a-zA-Z0-9:-]+)(>)",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.html"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.end.html"
+        }
+      }
     },
     "html-tag-with-js-attributes": {
       "name": "meta.tag.any.html",
