@@ -1,9 +1,9 @@
 {
-  "name": "html-in-js",
-  "displayName": "HTML in JS",
-  "publisher": "DeusCL",
+  "name": "html-in-js-somenoe-fork",
+  "displayName": "HTML in JS (somenoe's fork)",
+  "publisher": "somenoe",
   "description": "A simple VSCode extension that adds HTML highlighting inside JS template literals",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "icon": "images/logo.png",
   "engines": {
     "vscode": "^1.74.0"
@@ -12,11 +12,11 @@
     "Programming Languages"
   ],
   "main": "./out/extension.js",
-  "author": "DeusCL",
+  "author": "somenoe",
   "license": "MIT",
-  "homepage": "https://github.com/DeusCL/html-in-js#readme",
+  "homepage": "https://github.com/somenoe/html-in-js#readme",
   "bugs": {
-    "url": "https://github.com/DeusCL/html-in-js/issues"
+    "url": "https://github.com/somenoe/html-in-js/issues"
   },
   "keywords": [
     "html",
@@ -27,7 +27,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DeusCL/html-in-js.git"
+    "url": "https://github.com/somenoe/html-in-js.git"
   },
   "contributes": {
     "grammars": [
@@ -97,13 +97,24 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "bun run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "pack": "vsce package",
+    "publish": "vsce publish",
+    "format": "prettier --config prettier.config.mts --log-level warn --write .",
+    "lint": "bun run format && eslint src"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
+    "@eslint/js": "^9.0.0",
     "@types/node": "16.x",
-    "typescript": "^4.9.4"
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "@vscode/vsce": "^3.7.1",
+    "eslint": "^9.39.2",
+    "jiti": "^2.6.1",
+    "prettier": "^3.0.0",
+    "typescript": "^4.9.4",
+    "typescript-eslint": "^8.54.0"
   }
 }
