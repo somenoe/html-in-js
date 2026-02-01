@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.languages.registerCompletionItemProvider(
       ["javascript"],
       {
-        async provideCompletionItems(document, position, token, context) {
+        async provideCompletionItems(document, position, _token, _context) {
           if (!isInHtmlContext(document, position)) {
             return undefined;
           }
@@ -74,7 +74,9 @@ export function activate(context: vscode.ExtensionContext) {
 
                 return new vscode.CompletionList(emmetItems, false);
               }
-            } catch (error) {}
+            } catch {
+              // Handle error silently
+            }
           }
 
           return undefined;
@@ -229,7 +231,7 @@ function isLikelyEmmetAbbreviation(word: string, lineContext: string): boolean {
     return true;
   }
 
-  if (/[.#>+^*:\[\]()]/.test(word)) {
+  if (/[.#>+^*:[\]()]/.test(word)) {
     return true;
   }
 
